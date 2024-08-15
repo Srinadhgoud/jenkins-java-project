@@ -5,15 +5,15 @@ FROM node:14
 WORKDIR /usr/src/app
 
 # Create a simple Node.js app
-RUN echo "const http = require('http');" >> app.js && \
-    echo "const PORT = 3000;" >> app.js && \
-    echo "const server = http.createServer((req, res) => {" >> app.js && \
-    echo "  res.writeHead(200, { 'Content-Type': 'text/plain' });" >> app.js && \
-    echo "  res.end('Hello, World!\\n');" >> app.js && \
-    echo "});" >> app.js && \
-    echo "server.listen(PORT, () => {" >> app.js && \
-    echo "  console.log('Server running on port ' + PORT);" >> app.js && \
-    echo "});" >> app.js
+RUN echo "const http = require('http');\
+const PORT = 3000;\
+const server = http.createServer((req, res) => {\
+  res.writeHead(200, { 'Content-Type': 'text/plain' });\
+  res.end('Hello, World!\\n');\
+});\
+server.listen(PORT, () => {\
+  console.log('Server running on port ' + PORT);\
+});" > app.js
 
 # Expose the application port
 EXPOSE 3000
